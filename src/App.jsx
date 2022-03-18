@@ -1,5 +1,7 @@
 import React from 'react';
+import SideBar from './components/SideBar';
 import PokemonThumbnail from './components/PokemonThumbnail';
+import PokeCard from './components/PokeCard';
 
 function App() {
   const [allPokemons, setAllPokemons] = React.useState([]);
@@ -22,10 +24,9 @@ function App() {
         setAllPokemons((currentList) => [...currentList, data]);
       });
     }
+
     createPokemonObject(data.results);
-    {
-      console.log(allPokemons);
-    }
+    console.log(allPokemons);
   };
 
   React.useEffect(() => {
@@ -33,24 +34,19 @@ function App() {
   }, []);
 
   return (
-    <div className='app-container'>
-      <h1>Pokedex</h1>
-      <div className='pokemon-container'>
-        <div className='all-containers'>
-          {allPokemons.map((pokemon, index) => (
-            <PokemonThumbnail
-              key={index}
-              name={pokemon.name}
-              image={pokemon.sprites.other.dream_world.front_default}
-              types={pokemon.types}
-            />
-          ))}
-        </div>
-        <button className='load-more' onClick={() => getAllPokemons()}>
-          Load more
-        </button>
+    <main className='app-container'>
+      <SideBar />
+      <div>
+        {allPokemons.map((pokemon, index) => (
+          <PokeCard
+            key={index}
+            name={pokemon.name}
+            types={pokemon.types}
+            image={pokemon.sprites.other.dream_world.front_default}
+          />
+        ))}
       </div>
-    </div>
+    </main>
   );
 }
 export default App;
