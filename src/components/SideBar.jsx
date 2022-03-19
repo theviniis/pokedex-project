@@ -5,12 +5,12 @@ import BurgerIcon from './BurgerIcon';
 
 const SideBar = () => {
   return (
-    <aside>
-      <div className='logo'>
+    <aside className='side-menu'>
+      {/* <div className='logo'>
         <img src='../img/logo.png' alt='Pokeball' />
         <span>Pokedex</span>
         <BurgerIcon />
-      </div>
+      </div> */}
       <nav>
         <SearchBar />
         <ul>

@@ -26,7 +26,6 @@ function App() {
     }
 
     createPokemonObject(data.results);
-    console.log(allPokemons);
   };
 
   React.useEffect(() => {
@@ -36,7 +35,8 @@ function App() {
   return (
     <main className='app-container'>
       <SideBar />
-      <div>
+      <section className='wrapper'>
+        <h1 className='section-name'>Pokedex</h1>
         {allPokemons.map((pokemon, index) => (
           <PokeCard
             key={index}
@@ -45,7 +45,7 @@ function App() {
             image={pokemon.sprites.other.dream_world.front_default}
           />
         ))}
-      </div>
+      </section>
     </main>
   );
 }

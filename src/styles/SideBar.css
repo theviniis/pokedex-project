@@ -1,25 +1,29 @@
-nav,
-li {
+.side-menu nav,
+.side-menu li {
   box-sizing: border-box;
 }
 
-nav {
+.side-menu nav {
   padding: 1rem;
   margin: 1rem;
 }
 
-ul {
-  padding: 0;
+.side-menu li:first-child {
+  margin-top: 1rem;
 }
 
-li {
+.side-menu li {
   background-image: url('../img/pokeball.svg'), url('../img/pokeball.svg');
-  background-position: -123px -119px, 87px center;
+  background-position: -123px -119px, 108px center;
   background-repeat: no-repeat;
-  background-size: 13rem;
-  border-radius: 16px;
+  background-size: 11.5rem;
+  border-radius: 16px 67px 67px 16px;
   color: white;
   font-weight: 600;
   margin-bottom: 1rem;
   padding: 1.5rem;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 14%), 0 3px 6px rgb(0 0 0 / 21%);
+}
+.side-menu li:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
