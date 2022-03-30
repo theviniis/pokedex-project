@@ -50,15 +50,13 @@
   text-transform: capitalize;
 }
 
-.bg img {
-  box-sizing: border-box;
+.pokemon-img {
   max-height: 115px;
-  justify-self: center;
-  align-self: flex-end;
 }
 .pokeball-bg {
   position: absolute;
-  top: -21px;
-  left: 103px;
-  z-index: 0;
+  bottom: 0;
+  z-index: -1;
+  width: 300px;
+  height: 300px;
 }

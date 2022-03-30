@@ -12,8 +12,10 @@ const PokeCard = ({ name, types, image }) => {
           <li key={index}>{type.type.name}</li>
         ))}
       </ul>
-      <img src={image} alt={name} />
-      <Pokeball className='pokeball-bg' width='300px' height='300px' />
+      <div>
+        <img className='pokemon-img' src={image} alt={name} />
+        <Pokeball className='pokeball-bg' />
+      </div>
     </div>
   );
 };
