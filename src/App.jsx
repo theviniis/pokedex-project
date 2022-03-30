@@ -1,51 +1,30 @@
 import React from 'react';
-import SideBar from './components/SideBar';
-import PokemonThumbnail from './components/PokemonThumbnail';
-import PokeCard from './components/PokeCard';
+import Footer from './components/Footer';
+import PokemonCard from './components/PokemonCard';
+import SidenavCard from './components/SidenavCard';
+import useFetch from './components/useFetch';
 
 function App() {
-  const [allPokemons, setAllPokemons] = React.useState([]);
-  const [loadMore, setLoadMore] = React.useState(
-    'https://pokeapi.co/api/v2/pokemon?limit=21'
-  );
-
-  const getAllPokemons = async () => {
-    const res = await fetch(loadMore);
-    const data = await res.json();
-
-    setLoadMore(data.next);
-
-    function createPokemonObject(result) {
-      result.forEach(async (pokemon) => {
-        const res = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
-        );
-        const data = await res.json();
-        setAllPokemons((currentList) => [...currentList, data]);
-      });
-    }
-
-    createPokemonObject(data.results);
-  };
-
-  React.useEffect(() => {
-    getAllPokemons();
-  }, []);
-
+  const { allPokemons } = useFetch('https://pokeapi.co/api/v2/pokemon/');
   return (
-    <main className='app-container'>
-      <SideBar />
-      <section className='wrapper'>
-        <h1 className='section-name'>Pokedex</h1>
-        {allPokemons.map((pokemon, index) => (
-          <PokeCard
-            key={index}
-            name={pokemon.name}
-            types={pokemon.types}
-            image={pokemon.sprites.other.dream_world.front_default}
-          />
-        ))}
+    <main className='grid-template'>
+      <section className='pokemons-container'>
+        {allPokemons.map((pokemon, index) => {
+          return (
+            <PokemonCard
+              key={index}
+              name={pokemon.name}
+              image={pokemon.sprites.other.dream_world.front_default}
+              types={pokemon.types}
+            />
+          );
+        })}
       </section>
+      <aside className='side-nav'>
+        <nav>
+          <SidenavCard />
+        </nav>
+      </aside>
     </main>
   );
 }

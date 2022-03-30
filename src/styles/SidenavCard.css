@@ -1,0 +1,10 @@
+.side-nav {
+  position: static;
+}
+.side-nav li {
+  max-width: 300px;
+  max-height: 250px;
+  padding: 1.5rem 2rem;
+  margin: 1rem;
+  font-weight: 600;
+}

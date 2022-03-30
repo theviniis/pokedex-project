@@ -1,71 +1,43 @@
-/* reset */
-body,
-ul {
-  margin: 0;
-  padding: 0;
-}
-li {
-  list-style: none;
+@import url(./styles/reset.css);
+
+* {
+  box-sizing: border-box;
 }
 
 img {
-  display: block;
   max-width: 100%;
 }
 
-li,
-span,
+a,
 p,
+li,
 h1,
 h2,
 h3 {
   font-family: 'Open Sans', sans-serif;
 }
-h1,
-h2,
-h3 {
-  margin: 0;
-}
-.app-container {
+
+.grid-template {
   display: grid;
-  grid-template-columns: minmax(200px, 300px) 1fr;
-  width: 100%;
-  height: 100vh;
-  overflow-y: auto;
+  grid-template-areas: 'sidenav content';
+  grid-template-columns: 0.25fr 1fr;
+  padding: 4rem;
+  /* overflow-y: hidden; */
+  /* height: 100vh; */
 }
 
-.section-name {
-  grid-column: -1/1;
-  justify-self: center;
-  padding: 1.7rem;
-  color: black;
-  text-transform: capitalize;
+.side-nav {
+  grid-area: sidenav;
 }
 
-.grass,
-.bug,
-.pokedex {
-  background-color: #46d3a9;
+.card {
+  border-radius: 36px;
+  background: #eeeeee;
+  box-shadow: 17px 17px 42px #c6c6c6, -17px -17px 42px #ffffff;
+  cursor: pointer;
 }
-.fire,
-.moves {
-  background-color: #fb6d6c;
-}
-.water,
-.abilities {
-  background-color: #76bdfd;
-}
-.electric,
-.itens {
-  background-color: #f6d782;
-}
-.normal {
-  background-color: #999;
-}
-.locations,
-.poison {
-  background-color: #805591;
-}
-.type {
-  background-color: #b2726b;
+
+.card:hover {
+  background: linear-gradient(145deg, #d6d6d6, #ffffff);
+  box-shadow: 17px 17px 42px #c6c6c6, -17px -17px 42px #ffffff;
 }
