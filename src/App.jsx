@@ -1,31 +1,34 @@
-import React from 'react';
-import Footer from './components/Footer';
-import PokemonCard from './components/PokemonCard';
-import SidenavCard from './components/SidenavCard';
-import useFetch from './components/useFetch';
+import React, { useState } from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import { GlobalStyles, lightTheme, darkTheme } from './styles/themes';
+import SideNav from './components/Sidenav';
+import PokeCards from './components/PokeCards';
+
+const Wrapper = styled.main`
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) 5fr;
+  column-gap: 4rem;
+  max-width: 70vw;
+  margin: 0 auto;
+`;
 
 function App() {
-  const { allPokemons } = useFetch('https://pokeapi.co/api/v2/pokemon/');
+  const [theme, setTheme] = useState(lightTheme.name);
+  const toggleTheme = () => {
+    theme === lightTheme.name
+      ? setTheme(darkTheme.name)
+      : setTheme(lightTheme.name);
+  };
+
   return (
-    <main className='grid-template'>
-      <section className='pokemons-container'>
-        {allPokemons.map((pokemon, index) => {
-          return (
-            <PokemonCard
-              key={index}
-              name={pokemon.name}
-              image={pokemon.sprites.other.dream_world.front_default}
-              types={pokemon.types}
-            />
-          );
-        })}
-      </section>
-      <aside className='side-nav'>
-        <nav>
-          <SidenavCard />
-        </nav>
-      </aside>
-    </main>
+    <ThemeProvider theme={theme === lightTheme.name ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <button onClick={toggleTheme}>{theme}</button>
+      <Wrapper>
+        <SideNav />
+        <PokeCards />
+      </Wrapper>
+    </ThemeProvider>
   );
 }
 export default App;

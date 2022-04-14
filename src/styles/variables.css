@@ -1,0 +1,17 @@
+:root {
+  --w-backgroud: #e9eaf0;
+  --w-light-shadow: #ffffff;
+  --w-dark-shadow: #cfd0d6;
+
+  --d-backgroud: #24272c;
+  --d-light-shadow: #292d33;
+  --d-dark-shadow: #1f2125;
+
+  --d-label: #7f8493;
+
+  --w-gradient-blue: #2fb8ff;
+  --w-gradient-lighter: #9eecd9;
+
+  --border: 32px;
+  --font: 'Open Sans', sans-serif;
+}
