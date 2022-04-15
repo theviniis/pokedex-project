@@ -36,12 +36,13 @@ const PokeCards = () => {
     getPokemonsID();
   }, []);
 
+  console.log(allPokemons);
   return (
     <PokemonCardsSection>
       {allPokemons.map((pokemon) => (
         <PokeCard
           key={pokemon.id}
-          name={pokemon.forms[0].name}
+          name={pokemon.name}
           types={pokemon.types}
           img={pokemon.sprites.other.dream_world.front_default}
         />

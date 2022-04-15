@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Sections = styled.ul`
   height: 100vh;
+  width: 200px;
 `;
 
 const Section = styled.li`

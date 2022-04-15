@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Tittle } from '../styles/styles';
+import { Tittle } from '../../styles/styles';
 
 const PokemonCard = styled.section`
   display: grid;
@@ -39,7 +39,7 @@ const PokeImg = styled.img`
   place-self: flex-end;
   max-height: 110px;
   max-width: 110px;
-  filter: drop-shadow(3px 2px 3px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(3px 2px 2px ${({ theme }) => theme.darkShadow});
 `;
 
 const PokeCard = ({ name, types, img }) => {
