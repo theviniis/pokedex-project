@@ -2,42 +2,36 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Home from './components/Home';
+import SideNav from './components/Sidenav';
 import Moves from './components/moves/Moves';
 import { GlobalStyles } from './styles/global';
 import { lightTheme, darkTheme } from './styles/themes';
 import styled from 'styled-components';
-import SideNav from './components/Sidenav';
 
 const Wrapper = styled.main`
   display: grid;
-  grid-template-columns: 1fr 5fr;
-  column-gap: 2rem;
+  grid-template-columns: minmax(150px, 200px) 5fr;
+  grid-template-rows: 5vh 90vh 5vh;
+  padding: 8rem 0;
+  height: 100vh;
 `;
 
 function App() {
-  const [theme, setTheme] = React.useState(darkTheme.name);
-
-  const toggleTheme = () => {
-    theme === lightTheme.name
-      ? setTheme(darkTheme.name)
-      : setTheme(lightTheme.name);
-  };
+  const [theme, setTheme] = React.useState(lightTheme.name);
 
   return (
-    <Wrapper className='container'>
+    <ThemeProvider theme={theme === lightTheme.name ? lightTheme : darkTheme}>
       <BrowserRouter>
-        <SideNav />
-        <ThemeProvider
-          theme={theme === lightTheme.name ? lightTheme : darkTheme}
-        >
-          <GlobalStyles />
+        <Wrapper className='container'>
+          <SideNav />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/moves' element={<Moves />} />
+            <Route path='/moves/*' element={<Moves />} />
           </Routes>
-        </ThemeProvider>
+        </Wrapper>
       </BrowserRouter>
-    </Wrapper>
+      <GlobalStyles />
+    </ThemeProvider>
   );
 }
 export default App;

@@ -4,7 +4,12 @@ import PokeCard from './PokeCard';
 
 const PokemonCardsSection = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-auto-rows: calc((100% / 3) - 1rem);
+  gap: 2rem;
+  overflow-y: scroll;
+  padding: 2rem;
+  height: 100%;
 `;
 
 const PokeCards = () => {
@@ -36,7 +41,6 @@ const PokeCards = () => {
     getPokemonsID();
   }, []);
 
-  console.log(allPokemons);
   return (
     <PokemonCardsSection>
       {allPokemons.map((pokemon) => (

@@ -1,34 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Tittle } from '../../styles/styles';
+import Card from '../Card';
 
-const PokemonCard = styled.section`
+const PokemonCard = styled(Card)`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 36px minmax(100px, auto);
-  gap: 2rem 1rem;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  margin-right: 2rem;
+  grid-template-rows: 36px 1fr;
+  gap: 1rem;
+  padding: 1rem;
 `;
 
 const PokeTittle = styled(Tittle)`
   grid-column: -1/1;
-  height: 36px;
-  text-transform: capitalize;
-  font-weight: 600;
 `;
 
 const PokeTypes = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  justify-content: flex-start;
+  gap: 0.5rem;
   align-items: flex-start;
 `;
 
-const PokeType = styled.li`
-  padding: 1rem 2rem;
+const PokeType = styled(Card)`
+  padding: 0.5rem 1rem;
   font-size: 1rem;
   &:hover {
     background: initial;
@@ -43,21 +38,12 @@ const PokeImg = styled.img`
 `;
 
 const PokeCard = ({ name, types, img }) => {
-  const [active, setActive] = React.useState(false);
-
-  function handleClick(event) {
-    setActive(!active);
-  }
-
   return (
-    <PokemonCard
-      className={`card  ${active ? 'active' : ''}`}
-      onClick={handleClick}
-    >
+    <PokemonCard>
       <PokeTittle>{name}</PokeTittle>
       <PokeTypes>
         {types.map((type, index) => (
-          <PokeType className='card' key={index}>
+          <PokeType divTipe='li' key={index}>
             {type.type.name}
           </PokeType>
         ))}
